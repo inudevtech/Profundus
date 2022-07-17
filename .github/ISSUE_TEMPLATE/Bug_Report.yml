@@ -1,0 +1,30 @@
+name: バグレポート
+description: バグレポートを提出する
+title: "[Bug]: "
+labels: ["バグ"]
+body:
+  - type: markdown
+    attributes:
+      value: バグレポートを提出していただき、ありがとうございます。私達がデバッグをしやすいように、バグの情報を入力して下さい。お手数おかけします。
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: バグの内容
+      description: |
+        どのようなバグが発生したか**できるだけ詳しく**教えて下さい。
+        できればどのような動作をしなければいけないかも教えて下さい。
+      placeholder: バグの内容を教えて下さい。
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: マインクラフトのバージョン
+      description: バグが発生したマインクラフトのバージョンを選択して下さい。ここに乗っていないバージョンの場合は動作対象外のバージョンですのでバグレポートを送ることはできません。
+      options:
+        - 1.18.2(Java版)
+        - 1.18.1(Java版)
+        - 1.18(Java版)
+        - 1.18.x(統合版)
+    validations:
+      required: true

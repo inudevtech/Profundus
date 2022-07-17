@@ -13,8 +13,7 @@ on:
   pull_request:
     branches: [ master,develop ]
 
-permissions:
-  contents: read
+permissions: write-all
 
 jobs:
   build:
@@ -29,6 +28,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+      uses: gradle/gradle-build-action@cd3cedc781988c804f626f4cd2dc51d0bdf02a12
       with:
         arguments: build
+
+    - name: Check Javadoc
+      # warning: [deprecation] 以外で発生しているwarningとerrorを取得し、ヒットした場合は終了コード1で終了
+      run: "! ./gradlew javadoc 2>&1 | grep -v 'warning: \\[deprecation\\]' | grep -A 2 -e warning: -e error: ; exit $?"
+
+    - name: push Javadoc
+      if: github.ref == 'refs/heads/develop'
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        message: "Javadoc加筆"
+        branch: develop

@@ -1,0 +1,33 @@
+name: 新規機能のリクエスト
+description: 新しい機能のリクエストをし、このプロジェクトをより良いものにします。
+labels: [ "追加仕様" ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        機能要望を記入していただき、ありがとうございます。ご要望を検討しやすくするために、できるだけ詳しくご記入ください。
+        重複したリクエストを避けるため、すべてのissueを検索して同じリクエストが存在しないか確認するようお願いします。もし存在する場合は、そのissueの方に書き込みをお願いします。
+        新規機能をリクエストする前に、リクエストする機能がすでに機能として取り入れられていないことを確認してください。
+  - type: textarea
+    id: background
+    attributes:
+      label: このリクエストの背景
+      description: この要望の背景をお聞かせください。なぜそれを追加したいのですか？
+    validations:
+      required: false
+
+  - type: textarea
+    id: want-features
+    attributes:
+      label: あなたが望む新規機能
+      description: あなたが望む新規機能を簡潔にお書き下さい。
+    validations:
+      required: true
+
+  - type: textarea
+    id: other
+    attributes:
+      label: その他
+      description: その他、機能リクエストに関するコンテキストやスクリーンショット等を以下に追加してください。
+    validations:
+      required: false

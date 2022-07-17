@@ -1,4 +1,4 @@
 /**
  * プラグインのユーティリティクラスを提供するパッケージ
  */
-package tech.inudev.metaverseplugin.utils;
+package tech.inudev.profundus.utils;

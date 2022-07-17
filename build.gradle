@@ -15,10 +15,17 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
+    maven {
+        name = "opencollab-snapshot"
+        url = "https://repo.opencollab.dev/maven-snapshots/"
+    }
 }
 
 dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
     compileOnly 'io.papermc.paper:paper-api:1.18.1-R0.1-SNAPSHOT'
+    compileOnly "org.geysermc.floodgate:api:2.0-SNAPSHOT"
 }
 
 def targetJavaVersion = 17
@@ -44,4 +51,12 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+javadoc {
+    destinationDir = file("docs/")
 }
